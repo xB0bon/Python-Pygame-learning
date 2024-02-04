@@ -65,8 +65,9 @@ def main():
     banknotes = []
     score = 0
     background = pygame.image.load("background.jfif")
-    while running:
 
+    while running:
+        text = pygame.font.Font.render(pygame.font.SysFont("Arial", 48), f"score: {score}", True, (255, 255, 255))
         clock += pygame.time.Clock().tick(60) / 1000  # gra powtórzy się tyle razy na sekunde. zwalnia postać
         for event in pygame.event.get():  # zdarzenia wykonane przez gracza
             if event.type == pygame.QUIT:  # Jeśli gracz zamknie okienko
@@ -87,9 +88,11 @@ def main():
                 print(score)
 
         window.blit(background, (0,0))  # zmienie koloru tła. Dodawanie tła
+
         player.draw()
         for banknote in banknotes:
             banknote.draw()
+        window.blit(text, (500, 0))
         pygame.display.update()
 
 
